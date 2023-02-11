@@ -1,4 +1,5 @@
 using System;
+using LevelGeneration;
 using UnityEngine;
 using Utilities;
 
@@ -6,6 +7,8 @@ namespace Managers
 {
     public class GameManager : Singleton<GameManager>
     {
+        [SerializeField] private LevelGenerator _levelGenerator;
+        
         public static event Action<GameState> OnBeforeStateChanged;
         public static event Action<GameState> OnAfterStateChanged;
         
@@ -23,8 +26,8 @@ namespace Managers
                 case GameState.Starting:
                     HandleStarting();
                     break;
-                case GameState.SpawningEnemies:
-                    HandleSpawningEnemies();
+                case GameState.GeneratingLevel:
+                    HandleLevelGenerating();
                     break;
                 case GameState.Fighting:
                     HandleFighting();
@@ -47,12 +50,12 @@ namespace Managers
             //Сбрасываем время у всех спеллов
             //Ставим игрока в начальное место комнаты
             //Переводим в нормальное положение UI
-            GameState = GameState.SpawningEnemies;
+            GameState = GameState.GeneratingLevel;
         }
         
-        private void HandleSpawningEnemies()
+        private void HandleLevelGenerating()
         {
-            //Спавним врагов
+            _levelGenerator.Generate();
             GameState = GameState.Fighting;
         }
         
@@ -78,7 +81,7 @@ namespace Managers
     public enum GameState
     {
         Starting,
-        SpawningEnemies,
+        GeneratingLevel,
         Fighting,
         Lose,
         NextRoomChoosing
