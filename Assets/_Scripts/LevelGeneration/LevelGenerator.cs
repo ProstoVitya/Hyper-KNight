@@ -23,6 +23,7 @@ namespace LevelGeneration
             //двойной foreach выглядит не очень, но так быстрее
             foreach (var order in _orderArray)
             {
+                //возможно список _generatables придется дополнить после первого этапа элементами идущими по порядку ниже
                 foreach (var generatable in _generatables.Where(g => g.Order == order))
                 {
                     generatable.Generate();

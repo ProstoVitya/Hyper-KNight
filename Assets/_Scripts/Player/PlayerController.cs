@@ -1,22 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Usables;
+using Usables.Spells;
 using Utilities.Observer;
 
 namespace Player
 {
+    [RequireComponent(typeof(AudioSource))]
     public class PlayerController : Subject
     {
-        // Start is called before the first frame update
-        private void Start()
-        {
+        private SimpleSpell[] _spells;
 
+        private Transform _transform;
+        private AudioSource _audioSource;
+
+        private void Awake()
+        {
+            _transform = transform;
+            _audioSource = transform.GetComponent<AudioSource>();
+
+            //todo: подгружать выбранные в меню способности
         }
 
-        // Update is called once per frame
-        private void Update()
+        /// <summary>
+        /// Использует способность
+        /// </summary>
+        /// <param name="index">Номер элемента в UI</param>
+        public void UseSpell(int index)
         {
+            var spell = _spells[index];
 
+            if (spell.TimeToNextAttack <= 0)
+            {
+                spell.Use(_transform);
+                spell.UseEffects(_audioSource);
+            }
         }
     }
 }
