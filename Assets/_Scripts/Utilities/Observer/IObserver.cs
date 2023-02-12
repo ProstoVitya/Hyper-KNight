@@ -2,6 +2,6 @@
 {
     public interface IObserver
     {
-        public void OnNotyfy();
+        public void OnNotify();
     }
 }

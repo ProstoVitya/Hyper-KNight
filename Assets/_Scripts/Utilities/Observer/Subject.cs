@@ -19,7 +19,7 @@ namespace Utilities.Observer
 
         protected void NotifyObservers()
         {
-            _observers.ForEach(o => o.OnNotyfy());
+            _observers.ForEach(o => o.OnNotify());
         }
     }   
 }
