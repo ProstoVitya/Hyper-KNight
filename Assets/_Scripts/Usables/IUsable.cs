@@ -4,7 +4,7 @@ namespace Usables
 {
     public interface IUsable
     {
-        public float Delay { get; }
+        public float Cooldown { get; }
         public void Use(Transform usingObjectTransform = null);
     }
 }

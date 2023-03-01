@@ -5,7 +5,7 @@ namespace Usables.Spells
     public abstract class SimpleSpell : MonoBehaviour, IUsable
     {
         [Header("Parameters")]
-        [SerializeField] private float _delay;
+        [SerializeField] private float _cooldown;
         [SerializeField] private Collider _attackForm;
 
         [Header("Effects")]
@@ -14,7 +14,7 @@ namespace Usables.Spells
 
         private float _timeToNextAttack;
         
-        public float Delay => _delay;
+        public float Cooldown => _cooldown;
         
         /// <summary>
         /// Метод использует эффект, но не создает визуальных и аудио эффектов
@@ -28,7 +28,7 @@ namespace Usables.Spells
                 return;
             }
             UseSpell(transform);
-            _timeToNextAttack = Delay;
+            _timeToNextAttack = Cooldown;
         }
 
         public float TimeToNextAttack => _timeToNextAttack;
