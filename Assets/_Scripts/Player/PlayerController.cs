@@ -8,7 +8,8 @@ namespace Player
     [RequireComponent(typeof(AudioSource))]
     public class PlayerController : Subject
     {
-        private SimpleSpell[] _spells;
+        //временно SerializeField
+        [SerializeField] private SimpleSpell[] _spells;
 
         private Transform _transform;
         private AudioSource _audioSource;
@@ -17,7 +18,7 @@ namespace Player
         {
             _transform = transform;
             _audioSource = transform.GetComponent<AudioSource>();
-
+            
             //todo: подгружать выбранные в меню способности
         }
 
@@ -33,6 +34,7 @@ namespace Player
             {
                 spell.Use(_transform);
                 spell.UseEffects(_audioSource);
+                NotifyObservers((PlayerAction)index);
             }
         }
     }
