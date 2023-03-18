@@ -6,13 +6,13 @@ namespace Usables.Spells
     {
         [Header("Parameters")]
         [SerializeField] private float _cooldown;
-
+        [SerializeField] private Collider _attackForm;
 
         [Header("Effects")]
         [SerializeField] private AudioClip _sound;
         [SerializeField] private ParticleSystem _particles;
 
-        private float _timeToNextUse;
+        private float _timeToNextAttack;
         
         public float Cooldown => _cooldown;
         
@@ -23,15 +23,15 @@ namespace Usables.Spells
         /// <param name="usingObjectTransform"></param>
         public void Use(Transform usingObjectTransform = null)
         {
-            if (TimeToNextUse > 0)
+            if (TimeToNextAttack > 0)
             {
                 return;
             }
-            UseSpell(usingObjectTransform);
-            _timeToNextUse = Cooldown;
+            UseSpell(transform);
+            _timeToNextAttack = Cooldown;
         }
 
-        public float TimeToNextUse => _timeToNextUse;
+        public float TimeToNextAttack => _timeToNextAttack;
 
         protected abstract void UseSpell(Transform transform);
 
@@ -46,9 +46,9 @@ namespace Usables.Spells
 
         private void FixedUpdate()
         {
-            if (_timeToNextUse > 0)
+            if (_timeToNextAttack > 0)
             {
-                _timeToNextUse -= Time.fixedDeltaTime;
+                _timeToNextAttack -= Time.fixedDeltaTime;
             }
         }
     }
