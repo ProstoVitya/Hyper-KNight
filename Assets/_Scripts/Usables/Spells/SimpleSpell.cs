@@ -37,7 +37,8 @@ namespace Usables.Spells
 
         public virtual void UseEffects(AudioSource audioSource)
         {
-            _particles?.Play();
+            if(_particles != null)
+                _particles?.Play();
             if (_sound != null)
             {
                 audioSource.PlayOneShot(_sound);

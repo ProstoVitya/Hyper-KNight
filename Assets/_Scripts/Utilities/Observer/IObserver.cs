@@ -2,6 +2,6 @@
 {
     public interface IObserver
     {
-        public void OnNotify();
+        public void OnNotify(PlayerAction playerAction);
     }
 }

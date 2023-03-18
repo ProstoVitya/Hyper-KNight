@@ -10,16 +10,17 @@ namespace Utilities.Observer
 
         public void AddObserver(IObserver observer)
         {
+            _observers.Add(observer);
         }
 
         public void RemoveObserver(IObserver observer)
         {
-            
+            _observers.Remove(observer);
         }
 
-        protected void NotifyObservers()
+        protected void NotifyObservers(PlayerAction action)
         {
-            _observers.ForEach(o => o.OnNotify());
+            _observers.ForEach(o => o.OnNotify(action));
         }
     }   
 }
