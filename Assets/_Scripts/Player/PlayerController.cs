@@ -5,14 +5,12 @@ using Utilities.Observer;
 
 namespace Player
 {
-
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(AudioSource))]
     public class PlayerController : Subject
     {
         //временно SerializeField
         [SerializeField] private SimpleSpell[] _spells;
-        [SerializeField] private Transform _castPoint;
         [SerializeField] private float _speed = 6.0f; // скорость персонажа
         [SerializeField] private float _rotationSpeed = 200.0f; // скорость персонажа
         private AudioSource _audioSource;
@@ -37,8 +35,9 @@ namespace Player
 
             if (spell.TimeToNextUse <= 0)
             {
-                spell.Use(_castPoint);
+                spell.Use(transform);
                 spell.UseEffects(_audioSource);
+                NotifyObservers((PlayerAction)index);
             }
         }
         private void Update()

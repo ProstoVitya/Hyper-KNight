@@ -9,7 +9,6 @@ namespace Usables.Spells
 
         [Header("Effects")]
         [SerializeField] private AudioClip _sound;
-        [SerializeField] private ParticleSystem _particles;
 
         private float _timeToNextUse;
         
@@ -36,8 +35,6 @@ namespace Usables.Spells
 
         public virtual void UseEffects(AudioSource audioSource)
         {
-            if(_particles != null)
-                _particles?.Play();
             if (_sound != null)
             {
                 audioSource.PlayOneShot(_sound);
