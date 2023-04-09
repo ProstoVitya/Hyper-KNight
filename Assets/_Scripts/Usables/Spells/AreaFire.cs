@@ -7,7 +7,7 @@ public class AreaFire : MonoBehaviour
     [SerializeField] private float _lifetime;
     [SerializeField] private float _damage;
     [SerializeField] private float _cooldownAttack;
-    private float _radius=2f;
+    private float _radius=3f;
     private float _timeToAttack = 0f;
     private void Awake()
     {
