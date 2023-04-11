@@ -16,7 +16,10 @@ namespace Player
         private AudioSource _audioSource;
         private CharacterController _controller;
 
-
+        public SimpleSpell[] get_spells()
+        {
+            return _spells;
+        }
 
         private void Awake()
         {

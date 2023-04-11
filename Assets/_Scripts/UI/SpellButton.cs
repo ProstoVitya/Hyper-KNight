@@ -35,7 +35,7 @@ namespace _Scripts.UI
             }
         }
 
-        public void OnClick(int cooldown)
+        public void OnClick(float cooldown)
         {
             _cooldownTime = cooldown;
             _button.interactable = false;
