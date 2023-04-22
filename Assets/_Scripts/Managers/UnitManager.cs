@@ -15,6 +15,10 @@ namespace Managers
     public enum EnemyType
     {
         Slime,
+        Berserk,
+        Warrior,
+        Archer,
+        Magitian
     }
 }
 

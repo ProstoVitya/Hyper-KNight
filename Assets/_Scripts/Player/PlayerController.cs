@@ -7,7 +7,7 @@ namespace Player
 {
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(AudioSource))]
-    public class PlayerController : Subject
+    public class PlayerController : Subject, IObserver
     {
         //временно SerializeField
         [SerializeField] private SimpleSpell[] _spells;
@@ -50,6 +50,11 @@ namespace Player
             transform.Rotate(0, rotation, 0);
             Vector3 move = transform.forward * vertical * _speed;
             _controller.Move(move * Time.deltaTime);
+        }
+
+        public void OnNotify(PlayerAction playerAction)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

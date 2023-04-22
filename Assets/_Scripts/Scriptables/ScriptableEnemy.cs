@@ -21,8 +21,10 @@ namespace Scriptables
     [Serializable]
     public struct Stats
     {
-        public int Health;
-        public int Damage;
-        public int TravelDistance;
+        public float Health;
+        public float Damage;
+        public float TravelDistance;
+        public float AttackDistance;
+        public float AttackCooldown;
     }
 }

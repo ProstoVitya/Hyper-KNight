@@ -8,7 +8,7 @@ namespace Managers
     public class GameManager : Singleton<GameManager>
     {
         [SerializeField] private LevelGenerator _levelGenerator;
-        
+
         public static event Action<GameState> OnBeforeStateChanged;
         public static event Action<GameState> OnAfterStateChanged;
         
